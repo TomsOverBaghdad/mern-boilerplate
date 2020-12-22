@@ -1,0 +1,32 @@
+@import '~antd/dist/antd.less';
+
+.nav-menu-wrapper {
+  width: 100%;
+
+  &.is-left-nav {
+    min-width: 370px;
+  }
+
+  .ant-menu-horizontal {
+    line-height: @layout-header-height;
+    display: flex;
+    justify-content: space-between;
+
+    .ant-menu-item {
+      // padding to have the border take more space
+      margin: 0px 0px -2px 0px !important;
+      padding: 0px 20px !important;
+      // border-bottom-width: 1px !important;
+
+      .nav-menu-item-icon-only {
+        // margin on ant menu gets set expecting text to follow
+        // so negate because there's no text
+        margin: 0px !important;
+      }
+
+      .anticon {
+        font-size: 20px;
+      }
+    }
+  }
+}

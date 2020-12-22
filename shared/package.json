@@ -1,0 +1,8 @@
+{
+  "name": "@pavo/shared",
+  "version": "1.0.0",
+  "main": "test.js",
+  "module": "test.js",
+  "author": "",
+  "license": "ISC"
+}

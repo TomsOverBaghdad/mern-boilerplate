@@ -1,0 +1,33 @@
+@import '~antd/dist/antd.less';
+@import './variables.less';
+
+html,
+body,
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  min-height: @app-header-height;
+}
+
+main {
+  flex-grow: 1;
+  overflow: auto;
+  height: 100%;
+}
+
+footer {
+  min-height: @app-footer-height;
+}
+
+.site-form-item-icon {
+	color: @disabled-color;
+}
+
+// ant style overwrites
+.ant-card-bordered {
+	box-shadow: 0 4px 8px -2px rgba(0,0,0,0.14);
+}

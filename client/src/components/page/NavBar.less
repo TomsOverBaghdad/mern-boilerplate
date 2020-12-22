@@ -1,0 +1,66 @@
+@import '~antd/dist/antd.less';
+@import '../../variables.less';
+
+.app-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  background: @white;
+  box-shadow: 0 0 5px @normal-color;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: @zindex-affix;
+
+  height: @app-header-height;
+
+  // dont let the user be able to highlight the text
+  -webkit-user-select: none;  /* Chrome all / Safari all */
+  -moz-user-select: none;     /* Firefox all */
+  -ms-user-select: none;      /* IE 10+ */
+  user-select: none;
+
+  .logo-mobile {
+    align-self: center;
+    text-align: center;
+    width: 100px;
+  }
+
+  > .left-content {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: @padding-xss;
+
+    > .app-nav-back-button {
+      align-self: center;
+    }
+
+    .logo {
+      align-self: center;
+      text-align: center;
+      width: 100px;
+    }
+  }
+
+  > .right-content {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: @padding-xss;
+
+    .app-hamburger-menu {
+      align-self: center;
+      margin: 0px @padding-xs;
+    }
+  }
+}
+
+// have the menu look somwhat good
+.ant-drawer-body {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.ant-drawer-header {
+  text-align: right;
+  padding: 13px 24px !important;
+}
+

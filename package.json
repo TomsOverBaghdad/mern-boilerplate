@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "name": "mern-boilerplate",
+    "scripts": {
+        "client": "yarn workspace client start",
+        "server": "yarn workspace server start",
+        "start:both": "concurrently --kill-others-on-fail \"yarn client\"  \"yarn server\"",
+        "heroku-postbuild": "yarn workspace client build"
+    },
+    "workspaces": [
+        "*"
+    ],
+    "dependencies": {
+        "concurrently": "4.1.0"
+    }
+}

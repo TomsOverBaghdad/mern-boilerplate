@@ -1,0 +1,20 @@
+/**
+ * This file is so that we can use the ant variables in our jsx code
+ */
+@import '~antd/lib/style/themes/default.less';
+
+// note this is 2px more than the antd's @layout-header-height
+// this is because we have a border that's 2px
+@app-header-height: 66px;
+@app-footer-height: @app-header-height;
+
+:export {
+    // passing the variable to unit causes change of "64px" to "64"
+    // layoutHeaderHeight: unit(@layout-header-height);
+    // or just use as is
+    // layoutHeaderHeight: @layout-header-height;
+
+    primaryColor: @primary-color;
+    errorColor: @error-color;
+    zindexAffix: @zindex-affix;
+};
