@@ -41,7 +41,7 @@ export const LoadingList = ({ dataFetch, children, listProp }) => {
 	// might consider just not using the Spin component
 	let content = <div />;
 	if (dataFetch.result) {
-		let hasContent = listProp ? 
+		let hasContent = listProp ?
 			dataFetch.result[listProp].length :
 			dataFetch.result.length
 		if (hasContent) {

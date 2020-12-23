@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import {
-  useHistory,
+	useHistory,
 } from "react-router-dom";
 import {
-  Button,
-  Drawer,
+	Button,
+	Drawer,
 } from 'antd';
 import {
-  ArrowLeftOutlined,
-  MenuOutlined,
+	ArrowLeftOutlined,
+	MenuOutlined,
 } from '@ant-design/icons';
 import {
-  Link
+	Link
 } from 'react-router-dom';
 
 import NavMenu from './NavMenu';
@@ -22,9 +22,9 @@ import logo from '../../logo.png';
 import './NavBar.less';
 
 const Logo = () => (
-  <Link to={ClientRoutes.home()}>
-    <img src={logo} alt="logo" width="60" height="32" />
-  </Link>
+	<Link to={ClientRoutes.home()}>
+		<img src={logo} alt="logo" width="60" height="32" />
+	</Link>
 );
 
 /**
@@ -33,44 +33,44 @@ const Logo = () => (
  * The right-content has the sign-in and register as well as the menu icon button to
  * open up a drawer for more menu options
  */
-const NavBar = ({profile, drawerOptions = [], selectedKeys}) => {
-  const [showDrawer, setDrawerVisibility] = useState(false);
-  const history = useHistory();
+const NavBar = ({ drawerOptions = [], selectedKeys, showBack }) => {
+	const [showDrawer, setDrawerVisibility] = useState(false);
+	const history = useHistory();
 
-  return (
-    <nav className="app-nav-bar">
-      <div className="left-content">
-        <div className="app-nav-back-button">
-          <Button
-            type="text"
-            icon={<ArrowLeftOutlined className="app-nav-bar-icon" />}
-            size="large"
-            onClick={() => history.goBack()} />
-        </div>
-        <Logo />
-      </div>
-      <div className="right-content">
-        <UserMenuAvatar selectedKeys={selectedKeys} />
-        <Button
-          className="app-hamburger-menu"
-          type="text"
-          icon={<MenuOutlined className="app-nav-bar-icon" />}
-          onClick={() => setDrawerVisibility(true)}
-          size="large" />
-        <Drawer
-          placement="right"
-          closable={false}
-          onClose={() => setDrawerVisibility(false)}
-          visible={showDrawer}
-        >
-          <NavMenu
-            mode="inline"
-            options={drawerOptions}
-            selectedKeys={selectedKeys} />
-        </Drawer>
-      </div>
-    </nav>
-  );
+	return (
+		<nav className="app-nav-bar">
+			<div className="left-content">
+				{showBack && <div className="app-nav-back-button">
+					<Button
+						type="text"
+						icon={<ArrowLeftOutlined className="app-nav-bar-icon" />}
+						size="large"
+						onClick={() => history.goBack()} />
+				</div>}
+				<Logo />
+			</div>
+			<div className="right-content">
+				<UserMenuAvatar selectedKeys={selectedKeys} />
+				<Button
+					className="app-hamburger-menu"
+					type="text"
+					icon={<MenuOutlined className="app-nav-bar-icon" />}
+					onClick={() => setDrawerVisibility(true)}
+					size="large" />
+				<Drawer
+					placement="right"
+					closable={false}
+					onClose={() => setDrawerVisibility(false)}
+					visible={showDrawer}
+				>
+					<NavMenu
+						mode="inline"
+						options={drawerOptions}
+						selectedKeys={selectedKeys} />
+				</Drawer>
+			</div>
+		</nav>
+	);
 };
 
 export default NavBar;
