@@ -3,16 +3,11 @@ import ReactDOM from 'react-dom';
 import {
 	BrowserRouter
 } from "react-router-dom";
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faDumbbell, faRunning, faPeopleCarry } from '@fortawesome/free-solid-svg-icons';
-
 import { AuthProvider } from './useAuth';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-library.add(faDumbbell, faRunning, faPeopleCarry);
 
 /**
  * Combine providers to avoid providor hell with a bunch of wrappers

@@ -3,9 +3,9 @@ import {
 	useHistory,
 } from "react-router-dom";
 import {
-  Button,
-  Drawer,
-  Avatar,
+	Button,
+	Drawer,
+	Avatar,
 } from 'antd';
 import {
 	ArrowLeftOutlined,
@@ -50,7 +50,7 @@ const UserAvatar = ({ user }) => {
 const DrawerTitle = (props) => {
 	const { user } = useAuth();
 
-	return <UserAvatar user={user}/>;
+	return <UserAvatar user={user} />;
 }
 
 /**
@@ -59,44 +59,44 @@ const DrawerTitle = (props) => {
  * The right-content has the sign-in and register as well as the menu icon button to
  * open up a drawer for more menu options
  */
-const NavBar = ({drawerOptions = [], selectedKeys}) => {
-  const [showDrawer, setDrawerVisibility] = useState(false);
-  const history = useHistory();
+const NavBar = ({ drawerOptions = [], selectedKeys }) => {
+	const [showDrawer, setDrawerVisibility] = useState(false);
+	const history = useHistory();
 
-  return (
-    <nav className="app-nav-bar">
-      <div className="left-content">
-        <div className="app-nav-back-button">
-          <Button
-            type="text"
-            icon={<ArrowLeftOutlined className="app-nav-bar-icon" />}
-            size="large"
-            onClick={() => history.goBack()} />
-        </div>
-        <Logo />
-      </div>
-      <div className="right-content">
-        <Button
-          className="app-hamburger-menu"
-          type="text"
-          icon={<MenuOutlined className="app-nav-bar-icon" />}
-          onClick={() => setDrawerVisibility(true)}
-          size="large" />
-        <Drawer
-          placement="right"
-		  closable={false}
-		  title={<DrawerTitle />}
-          onClose={() => setDrawerVisibility(false)}
-          visible={showDrawer}
-        >
-          <NavMenu
-            mode="inline"
-            options={drawerOptions}
-            selectedKeys={selectedKeys} />
-        </Drawer>
-      </div>
-    </nav>
-  );
+	return (
+		<nav className="app-nav-bar">
+			<div className="left-content">
+				<div className="app-nav-back-button">
+					<Button
+						type="text"
+						icon={<ArrowLeftOutlined className="app-nav-bar-icon" />}
+						size="large"
+						onClick={() => history.goBack()} />
+				</div>
+				<Logo />
+			</div>
+			<div className="right-content">
+				<Button
+					className="app-hamburger-menu"
+					type="text"
+					icon={<MenuOutlined className="app-nav-bar-icon" />}
+					onClick={() => setDrawerVisibility(true)}
+					size="large" />
+				<Drawer
+					placement="right"
+					closable={false}
+					title={<DrawerTitle />}
+					onClose={() => setDrawerVisibility(false)}
+					visible={showDrawer}
+				>
+					<NavMenu
+						mode="inline"
+						options={drawerOptions}
+						selectedKeys={selectedKeys} />
+				</Drawer>
+			</div>
+		</nav>
+	);
 };
 
 export default NavBar;
