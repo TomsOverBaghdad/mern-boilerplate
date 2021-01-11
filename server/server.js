@@ -17,8 +17,8 @@ mongoose.set('useFindAndModify', false);
 // setup our models
 const modelsPath = path.resolve('./models');
 fs.readdirSync(modelsPath)
-  .filter(file => !file.search(/^[^.].*\.js$/))
-  .forEach(file => require(path.join(modelsPath, file)));
+	.filter(file => !file.search(/^[^.].*\.js$/))
+	.forEach(file => require(path.join(modelsPath, file)));
 
 // config the server
 require('./config/passport')(passport);
@@ -32,16 +32,16 @@ const env = process.env.NODE_ENV || 'development';
 connect();
 
 function listen() {
-  app.listen(port, () => {
-  	console.log(`Listening on port: ${port}`);
-  	console.log(`Environment ${env}`);
-  });
+	app.listen(port, () => {
+		console.log(`Listening on port: ${port}`);
+		console.log(`Environment ${env}`);
+	});
 }
 
 function connect() {
-  mongoose.connection
-    .on('error', console.log)
-    .on('disconnected', connect)
-    .once('open', listen);
-  return mongoose.connect(db.connectionString, db.options);
+	mongoose.connection
+		.on('error', console.log)
+		.on('disconnected', connect)
+		.once('open', listen);
+	return mongoose.connect(db.connectionString, db.options);
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  useHistory,
+	useHistory,
 } from "react-router-dom";
 import {
   Button,
@@ -8,11 +8,11 @@ import {
   Avatar,
 } from 'antd';
 import {
-  ArrowLeftOutlined,
-  MenuOutlined,
+	ArrowLeftOutlined,
+	MenuOutlined,
 } from '@ant-design/icons';
 import {
-  Link
+	Link
 } from 'react-router-dom';
 
 import NavMenu from './NavMenu';
@@ -25,9 +25,9 @@ import logo from '../../logo.png';
 import './NavBar.less';
 
 const Logo = () => (
-  <Link to={ClientRoutes.home()}>
-    <img src={logo} alt="logo" width="60" height="32" />
-  </Link>
+	<Link to={ClientRoutes.home()}>
+		<img src={logo} alt="logo" width="60" height="32" />
+	</Link>
 );
 
 const UserAvatar = ({ user }) => {

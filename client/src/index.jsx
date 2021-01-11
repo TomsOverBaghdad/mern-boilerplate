@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
-  BrowserRouter
+	BrowserRouter
 } from "react-router-dom";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faDumbbell, faRunning, faPeopleCarry } from '@fortawesome/free-solid-svg-icons';
+
 import { AuthProvider } from './useAuth';
 
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
+library.add(faDumbbell, faRunning, faPeopleCarry);
 
 /**
  * Combine providers to avoid providor hell with a bunch of wrappers
@@ -18,18 +23,18 @@ import * as serviceWorker from './serviceWorker';
  * https://dev.to/horusgoul/say-goodbye-to-provider-hell-with-react-component-pack-6ib
  */
 const nest = (...components) => props =>
-  components.reduce((children, Current) => <Current {...props}>{children}</Current>, props.children);
+	components.reduce((children, Current) => <Current {...props}>{children}</Current>, props.children);
 
 const ProviderPack = nest(
-  AuthProvider,
-  BrowserRouter
+	AuthProvider,
+	BrowserRouter
 );
 
 ReactDOM.render(
-  <ProviderPack>
-    <App />
-  </ProviderPack>,
-  document.getElementById('root')
+	<ProviderPack>
+		<App />
+	</ProviderPack>,
+	document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
