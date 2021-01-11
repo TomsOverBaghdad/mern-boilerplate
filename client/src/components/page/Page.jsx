@@ -10,14 +10,24 @@ import React from 'react';
 import NavBar from './NavBar';
 // import FooterBar from './FooterBar';
 
+import { useAuth } from '../../useAuth';
+import { ClientRoutes } from '../../routes';
+
 const Page = (props) => {
-  // let { user } = useAuth();
+  let { user } = useAuth();
 
   let drawerOptions = [
     // {path: ClientRoutes.contactUs(), title: 'Contact Us'},
     // {path: ClientRoutes.home(), title: 'Home', Icon: HomeOutlined},
     // {path: ClientRoutes.calendar(), title: 'Calendar', Icon: CalendarOutlined},
   ];
+
+  if (!user) {
+    drawerOptions.concat([
+      { path: ClientRoutes.signIn(), title: 'Sign In' },
+      { path: ClientRoutes.register(), title: 'Register' },
+    ]);
+  }
   
   return (
     <React.Fragment>

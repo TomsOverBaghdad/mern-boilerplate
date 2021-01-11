@@ -5,6 +5,7 @@ import {
 import {
   Button,
   Drawer,
+  Avatar,
 } from 'antd';
 import {
   ArrowLeftOutlined,
@@ -15,10 +16,12 @@ import {
 } from 'react-router-dom';
 
 import NavMenu from './NavMenu';
-import UserMenuAvatar from './UserMenuAvatar';
 
+import { useAuth } from '../../useAuth';
 import { ClientRoutes } from '../../routes';
+import { primaryColor } from '../../variables.less';
 import logo from '../../logo.png';
+
 import './NavBar.less';
 
 const Logo = () => (
@@ -27,13 +30,36 @@ const Logo = () => (
   </Link>
 );
 
+const UserAvatar = ({ user }) => {
+	const history = useHistory();
+	const firstInitial = user.firstName[0].toUpperCase();
+	const lastInitial = user.lastName[0].toUpperCase();
+	const avatarTitle = firstInitial + lastInitial;
+	return (
+		<Avatar
+			onClick={() => history.push(ClientRoutes.account())}
+			style={{ color: primaryColor, verticalAlign: 'middle', cursor: 'pointer' }}
+			size="large"
+		>
+			{avatarTitle}
+		</Avatar>
+	);
+}
+
+// todo, put a bit more here
+const DrawerTitle = (props) => {
+	const { user } = useAuth();
+
+	return <UserAvatar user={user}/>;
+}
+
 /**
  * The navbar is designed to be responsive to screen sizes using ant-design.
  * The left-content has the back button, logo, and actions/pages for the user to go to.
  * The right-content has the sign-in and register as well as the menu icon button to
  * open up a drawer for more menu options
  */
-const NavBar = ({profile, drawerOptions = [], selectedKeys}) => {
+const NavBar = ({drawerOptions = [], selectedKeys}) => {
   const [showDrawer, setDrawerVisibility] = useState(false);
   const history = useHistory();
 
@@ -50,7 +76,6 @@ const NavBar = ({profile, drawerOptions = [], selectedKeys}) => {
         <Logo />
       </div>
       <div className="right-content">
-        <UserMenuAvatar selectedKeys={selectedKeys} />
         <Button
           className="app-hamburger-menu"
           type="text"
@@ -59,7 +84,8 @@ const NavBar = ({profile, drawerOptions = [], selectedKeys}) => {
           size="large" />
         <Drawer
           placement="right"
-          closable={false}
+		  closable={false}
+		  title={<DrawerTitle />}
           onClose={() => setDrawerVisibility(false)}
           visible={showDrawer}
         >

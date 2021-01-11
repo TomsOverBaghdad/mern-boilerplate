@@ -18,6 +18,8 @@ export function AuthProvider({ children }) {
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
 
+const testUser = { email: "tdror53@gmail.com", firstName: "Tom", lastName: "Dror" }
+
 // Provider hook that creates auth object and handles state
 function useProvideAuth() {
   const [user, setUser] = useState(null);
@@ -40,19 +42,19 @@ function useProvideAuth() {
       .then((userRes) => setUser(userRes))
   );
 
-  const authenticate = useAsync(() =>
-    axios.get(AuthRoutes.authenticate())
-      .then((userRes) => {
-        console.log('current user', {user: userRes})
-        userRes ?
-          setUser(userRes) :
-          setUser(false);
-      })
-      .catch((err) => {
-        // todo handle errors here, like the server is down or other issues
-        console.error(err);
-        setUser(false);
-      })
+  const authenticate = useAsync(() => setUser(testUser)
+    // axios.get(AuthRoutes.authenticate())
+    //   .then((userRes) => {
+    //     console.log('current user', {user: userRes})
+    //     userRes ?
+    //       setUser(userRes) :
+    //       setUser(false);
+    //   })
+    //   .catch((err) => {
+    //     // todo handle errors here, like the server is down or other issues
+    //     console.error(err);
+    //     setUser(false);
+    //   })
     , []
   );
 
