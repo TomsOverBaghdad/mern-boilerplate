@@ -41,6 +41,7 @@ const NavMenu = (props) => {
 					const iconClass = classNames({
 						"nav-menu-item-icon-only": iconOnly,
 					})
+					console.log("sdf", showIcon)
 					return (
 						<Menu.Item
 							key={path}

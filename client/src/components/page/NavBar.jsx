@@ -47,9 +47,7 @@ const UserAvatar = ({ user }) => {
 }
 
 // todo, put a bit more here
-const DrawerTitle = (props) => {
-	const { user } = useAuth();
-
+const DrawerTitle = ({user}) => {
 	return <UserAvatar user={user} />;
 }
 
@@ -60,6 +58,7 @@ const DrawerTitle = (props) => {
  * open up a drawer for more menu options
  */
 const NavBar = ({ drawerOptions = [], selectedKeys }) => {
+	const { user } = useAuth();
 	const [showDrawer, setDrawerVisibility] = useState(false);
 	const history = useHistory();
 
@@ -85,7 +84,7 @@ const NavBar = ({ drawerOptions = [], selectedKeys }) => {
 				<Drawer
 					placement="right"
 					closable={false}
-					title={<DrawerTitle />}
+					title={user ? <DrawerTitle user={user}/> : null}
 					onClose={() => setDrawerVisibility(false)}
 					visible={showDrawer}
 				>

@@ -42,7 +42,8 @@ function useProvideAuth() {
 			.then((userRes) => setUser(userRes))
 	);
 
-	const authenticate = useAsync(() => setUser(testUser)
+	//TODO remove test user stuff here
+	const authenticate = useAsync(() => setUser(null)
 		// axios.get(AuthRoutes.authenticate())
 		//   .then((userRes) => {
 		//     console.log('current user', {user: userRes})

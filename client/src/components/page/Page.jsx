@@ -1,11 +1,14 @@
 import React from 'react';
-// import {
-//   // menu icons
+import {
+  // menu icons
 //   HomeOutlined,
 //   CalendarOutlined,
 //   TeamOutlined,
 //   ClockCircleOutlined,
-// } from '@ant-design/icons';
+	LoginOutlined,
+	LogoutOutlined,
+	UserAddOutlined,
+} from '@ant-design/icons';
 
 import NavBar from './NavBar';
 // import FooterBar from './FooterBar';
@@ -23,10 +26,14 @@ const Page = (props) => {
 	];
 
 	if (!user) {
-		drawerOptions.concat([
-			{ path: ClientRoutes.signIn(), title: 'Sign In' },
-			{ path: ClientRoutes.register(), title: 'Register' },
-		]);
+		drawerOptions.push(
+			{ path: ClientRoutes.signIn(), title: 'Sign In', Icon: LoginOutlined },
+			{ path: ClientRoutes.register(), title: 'Register', Icon: UserAddOutlined }
+		);
+	} else {
+		drawerOptions.push(
+			{ path: ClientRoutes.signOut(), title: 'Sign Out', Icon: LogoutOutlined },
+		);
 	}
 
 	return (
